@@ -1,9 +1,15 @@
+<% if logged_in? %>
+
+<p>ログイン完了ユーザ：</p><%= current_use.name %></p>
+<% else %>
+
 <h1>タスクリスト</h1>
 
 <ul>
     <% @tasks.each do |task| %>
     <li><%= link_to task.id, task %> : <%= task.status %> &gt; <%= task.content %></li>
+    <%= link_to '新規タスクの投稿', new_task_path %>
     <% end %>
 </ul>
 
-<p>未登録のユーザーですか？</p><%= link_to 'Sign up now!', signup_path %>
+<%= link_to 'login', login_path %>

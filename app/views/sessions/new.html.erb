@@ -1,0 +1,15 @@
+<p>ログインフォーム</p>
+
+<%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+
+<%= f.label :email, 'メールアドレス' %>
+<%= f.email_field :email %>
+
+<%= f.label :passwird, 'パスワード' %>
+<%= f.password_field :password %>
+
+<%= f.submit 'ログインします' %>
+
+<% end %>
+
+<p>未登録のユーザーですか？</p><%= link_to 'Sign up now!', signup_path %>
