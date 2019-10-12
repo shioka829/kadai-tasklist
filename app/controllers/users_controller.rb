@@ -2,7 +2,9 @@ class UsersController < ApplicationController
   def index
   end
 
+  #ユーザ情報の表示
   def show
+    @user = User.find(params[:id])
   end
 
   #新規ユーザ登録ボタンを押したら、このNew
