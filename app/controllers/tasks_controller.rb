@@ -1,8 +1,8 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :require_user_logged_in
   
 def index
-    @tasks = Task.all
+  @tasks = Task.all
 end 
   
 def show
@@ -19,7 +19,7 @@ def create
     flash[:success] = 'タスクが正常に投稿されました'
     redirect_to @task
   else
-    flash.now[:danger] = 'タスクが投稿されませんでした'
+    flash[:danger] = 'タスクが投稿されませんでした'
     render :new
   end
 end
