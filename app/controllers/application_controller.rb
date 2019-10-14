@@ -1,20 +1,16 @@
-    class ApplicationController < ActionController::Base
+class ApplicationController < ActionController::Base
       
-        include SessionsHelper
+  include SessionsHelper
         
-        def set_current_user
-          @current_user = User.find_by(id: session[:user.id])
-        end
+  def set_current_user
+    @current_user = User.find_by(id: session[:user.id])
+  end
         
-      private
-
-    def require_user_logged_in
-      unless logged_in?
-        redirect_to login_url
-      end
+private
+      
+  def require_user_logged_in
+    unless logged_in?
+      redirect_to login_url
     end
-    
-    def counts(user)
-      @count_tasks = user.tasks.count
-    end
-    end
+  end
+end
