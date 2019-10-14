@@ -7,6 +7,8 @@ class UsersController < ApplicationController
   #ユーザ情報の表示
   def show
     @user = User.find(params[:id])
+    @tasks = @user.tasks.order(id: :desc).page(params[:page])
+    counts(@user)
   end
 
   #新規ユーザ登録ボタンを押したら、このNew
@@ -33,4 +35,9 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end 
+  
+  def task_params
+  params.require(:task).permit(:content, :status)
+  end 
+  
 end
